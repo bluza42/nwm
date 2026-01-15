@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Druki 3D – Zamówienia</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f2f2f2;
+}
+header {
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+}
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.product {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+}
+.product button {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+.product button:hover {
+    background: #444;
+}
+#orderBox {
+    display: none;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+}
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+button.submit {
+    background: green;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<header>
+<h1>Sprzedaż druków 3D</h1>
+<p>Zamów indywidualny wydruk 3D</p>
+</header>
+
+<div class="container">
+
+<h2>Oferta</h2>
+
+<div class="products">
+    <div class="product">
+        <h3>Uchwyt na telefon</h3>
+        <p>25 zł</p>
+        <button onclick="openForm('Uchwyt na telefon')">Zamów</button>
+    </div>
+
+    <div class="product">
+        <h3>Organizer na biurko</h3>
+        <p>40 zł</p>
+        <button onclick="openForm('Organizer na biurko')">Zamów</button>
+    </div>
+
+    <div class="product">
+        <h3>Wydruk na zamówienie</h3>
+        <p>Indywidualna wycena</p>
+        <button onclick="openForm('Wydruk indywidualny')">Zamów</button>
+    </div>
+</div>
+
+<div id="orderBox">
+<h2>Formularz zamówienia</h2>
+
+<form action="https://formsubmit.co/kacperkluza5@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="Nowe zamówienie – Druk 3D">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <input type="text" name="Produkt" id="product" readonly>
+    <input type="text" name="Imię i nazwisko" placeholder="Imię i nazwisko" required>
+    <input type="email" name="Email klienta" placeholder="Email" required>
+    <textarea name="Szczegóły zamówienia" placeholder="Kolor, materiał, wymiary, ilość" required></textarea>
+
+    <button class="submit" type="submit">Wyślij zamówienie</button>
+</form>
+</div>
+
+</div>
+
+<script>
+function openForm(product) {
+    document.getElementById("orderBox").style.display = "block";
+    document.getElementById("product").value = product;
+    window.scrollTo(0, document.body.scrollHeight);
+}
+</script>
+
+</body>
+</html>
